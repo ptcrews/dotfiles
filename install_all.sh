@@ -22,6 +22,10 @@ if [[ -z $UPDATE_ONLY ]]; then
   sudo apt install python3
   sudo apt install python3-pip
 
+  # Install various packages for development work.
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  sudo apt install cargo
+
 fi 
 
 # Get current directory.
