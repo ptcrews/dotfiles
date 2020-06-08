@@ -17,16 +17,24 @@ if [[ -z $UPDATE_ONLY ]]; then
   # Update and upgrade current packages.
   sudo apt update
   sudo apt upgrade
-  
+
   # Install misc dependencies not included elsewhere.
   sudo apt install python3
   sudo apt install python3-pip
+  curl -sL install-node.now.sh/lts | sudo bash
 
   # Install various packages for development work.
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  sudo apt install cargo
+  rustup toolchain install nightly
+  rustup component add rust-src
+  rustup component add rust-docs
 
-fi 
+  sudo apt install cargo
+  cargo install rustfmt
+
+  sudo apt install tmux
+
+fi
 
 # Get current directory.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"

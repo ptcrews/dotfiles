@@ -62,27 +62,20 @@ let g:airline_symbols.whitespace = 'Ξ'
 " Specifies the vim-plug directory
 call plug#begin('~/.vim/plugged')
 
-Plug 'fatih/vim-go'
-
-Plug '~/.vim/plugged/p4-language-manual'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 
+" Syntatic language support.
+Plug 'rust-lang/rust.vim'
 Plug 'ledger/vim-ledger'
 au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
 
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-if has('nvim')
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-	Plug 'Shougo/deoplete.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+" Semantic language support.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Install global extensions that should be installed for coc.nvim.
+let g:coc_global_extensions = [ 'coc-rust-analyzer' ]
 
 " Initialize plugin system
 call plug#end()
