@@ -66,6 +66,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 
+" Support for the Coq theorem prover.
+Plug 'whonore/Coqtail'
+
 " Syntatic language support.
 Plug 'rust-lang/rust.vim'
 Plug 'ledger/vim-ledger'
