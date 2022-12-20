@@ -68,6 +68,7 @@ Plug 'tpope/vim-fugitive'
 
 " Support for the Coq theorem prover.
 Plug 'whonore/Coqtail'
+let g:coc_disable_startup_warning = 1
 
 " Syntatic language support.
 Plug 'rust-lang/rust.vim'
@@ -82,5 +83,26 @@ let g:coc_global_extensions = [ 'coc-rust-analyzer' ]
 
 " Initialize plugin system
 call plug#end()
+
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+let g:coc_user_config = {}
+let g:coc_user_config['suggest.noselect'] = v:true
+
+" Set the <leader> key to "," instead of the default "/" as it is easier to
+" use.
+let mapleader = ","
 
 set cursorline
