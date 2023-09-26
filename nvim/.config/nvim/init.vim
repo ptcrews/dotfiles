@@ -1,23 +1,28 @@
 " NeoVim config file
 
+set nocompatible
+filetype plugin on
+syntax on
+
 set expandtab
 set shiftwidth=2
 set tabstop=2
 set smartindent
-set relativenumber
-set number
-set cursorline
-set encoding=utf-8
-set colorcolumn=80
+set relativenumber          " Number all lines relative to the current line.
+set number                  " Give absolute line number for current line.
+set cursorline              " Underline current line.
+set encoding=utf-8          " Enable unicode.
+set tw=80                   " Set the textwidth to 80.
+set colorcolumn=80          " Display a red line at column 80.
+set hidden                  " Allow hidden buffers.
+set list listchars=trail:·  " Displays trailing whitespace as middle-dots
+
 " Set the <leader> key to "," instead of the default "/" as it is easier to
 " use.
 let mapleader = ","
-" Displays trailing whitespace as middle-dots
-set list listchars=trail:·
 
-"colo murphy
+" Color scheme configuration.
 colo ron
-syntax on
 
 "set termguicolors
 set t_Co=256
@@ -55,7 +60,15 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Git support.
 Plug 'tpope/vim-fugitive'
+
+" Vimwiki support.
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/journal/', 'syntax': 'markdown',
+                      \ 'ext': '.md'}]
+let g:vimwiki_folding = 'syntax'
 
 " Support for the Coq theorem prover.
 Plug 'whonore/Coqtail'
