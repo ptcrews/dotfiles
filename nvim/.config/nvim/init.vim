@@ -1,7 +1,7 @@
 " NeoVim config file
 
 set nocompatible
-filetype plugin on
+filetype plugin indent on
 syntax on
 
 set expandtab
@@ -64,11 +64,17 @@ Plug 'vim-airline/vim-airline-themes'
 " Git support.
 Plug 'tpope/vim-fugitive'
 
+" LaTeX support. Note v2.14 is currently broken, so stay on v2.13.
+Plug 'lervag/vimtex', { 'tag': 'v2.13' }
+
 " Vimwiki support.
 Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/journal/', 'syntax': 'markdown',
-                      \ 'ext': '.md'}]
+                      \ 'ext': '.md', 'auto_tags': 1}]
 let g:vimwiki_folding = 'syntax'
+let g:vimwiki_autowriteall = 0    " Disable autowriting for VimWiki pages.
+let g:vimwiki_key_mappings = { 'table_mappings': 0 } " Prevent VimWiki from
+                                                     " stealing TAB bindings.
 
 " Support for the Coq theorem prover.
 Plug 'whonore/Coqtail'
