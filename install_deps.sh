@@ -46,5 +46,6 @@ pip3 install --user --upgrade pynvim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall
+nvim +CocInstall coc-clangd
 
 echo "Dependencies installed."

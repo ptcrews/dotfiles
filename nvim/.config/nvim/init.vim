@@ -75,6 +75,7 @@ let g:vimwiki_folding = 'syntax'
 let g:vimwiki_autowriteall = 0    " Disable autowriting for VimWiki pages.
 let g:vimwiki_key_mappings = { 'table_mappings': 0 } " Prevent VimWiki from
                                                      " stealing TAB bindings.
+let g:vimwiki_global_ext = 0
 
 " Support for the Coq theorem prover.
 Plug 'whonore/Coqtail'
